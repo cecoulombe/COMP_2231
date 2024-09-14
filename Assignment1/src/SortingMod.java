@@ -1,34 +1,19 @@
 /* Author: Caitlin Coulombe, T00756521
  * Date: September 10, 2024
  * Course: COMP 2231
- * Assignment 1: See the relevant drivers for more information about the specific questions.
+ * Assignment 1, Question 3: Modified the sorting class so that it returns the timing, number of compareTo, and number of swaps
  */
 
  import java.util.Arrays;
 
-public class Sorting {
+public class SortingMod {
     //-----------------------------------------------------------------------------------------------------------------------
     // shellSort() implements the pseudocode algorithm given in the assignment to sort the list using a Shell sort.
     //-----------------------------------------------------------------------------------------------------------------------
     public static <T extends Comparable<T>> void shellSort(T[] data)
     {
-        // pseudocode in the assignment
-        // set up the method so that it prints the array any time a swap occurs to ensure its working as intended
-
-        // gap = size / 2
-        // do until gap <= 0
-            // swapflag = true
-            // do until swapflag is false
-                // swapflag = false
-                // for s = 0 to size - gap
-                    // if num[s] > num[s + gap]
-                        // swap num[s] with num[s + gap]
-                        // swapflag = true
-                    // end if
-                // end for
-            // end do
-            // gap = gap / 2
-        // end do
+        // set up timing
+        long startTime = System.nanoTime();
 
         // variables
         int size = data.length;
@@ -40,7 +25,7 @@ public class Sorting {
         int compareToCount = 0;
 
         // print the initial array
-        System.out.println("Initial array: " + Arrays.toString(data));
+        // System.out.println("Initial array: " + Arrays.toString(data));
 
         // iterate through the array comparing and swapping values
         do
@@ -57,7 +42,7 @@ public class Sorting {
                     {
                         swap(data, s, s + gap);
                         swapCount++;
-                        System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
+                        // System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
                         swapflag = true;
                     }
                 }
@@ -67,7 +52,11 @@ public class Sorting {
 
         } while (gap > 0);
 
-        System.out.println("compareTo count: " + compareToCount);
+        long endTime = System.nanoTime();
+
+        double duration = (endTime - startTime)/1000000.0;
+
+        System.out.println("compareTo count: " + compareToCount + "\nSwap count: " + swapCount + "\nMethod duration: " + duration + "ms\n");    
     }
 
     //-----------------------------------------------------------------------------------------------------------------------
@@ -76,6 +65,9 @@ public class Sorting {
     //-----------------------------------------------------------------------------------------------------------------------
     public static <T extends Comparable<T>> void bubbleSort(T[] data)
     {
+        // set up timing
+        long startTime = System.nanoTime();
+
         int position, scan, swapCount = 0;
         T temp;
         int compareToCount = 0;
@@ -89,19 +81,25 @@ public class Sorting {
                 {
                     swap(data, scan, scan + 1);
                     swapCount++;
-                    System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
+                    // System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
                 }
             }
         }
 
-        System.out.println("compareTo count: " + compareToCount);
+        long endTime = System.nanoTime();
+        double duration = (endTime - startTime)/1000000.0;
+
+        System.out.println("compareTo count: " + compareToCount + "\nSwap count: " + swapCount + "\nMethod duration: " + duration + "ms\n");    
     }
 
     //-----------------------------------------------------------------------------------------------------------------------
     // bubbleSort2() modified bubble sort so that it recognizes when the list is already sorted
     //-----------------------------------------------------------------------------------------------------------------------
     public static <T extends Comparable<T>> void bubbleSort2(T[] data)
-    {
+    {   
+        // set up timing
+        long startTime = System.nanoTime();
+
         int scan, swapCount = 0;
         boolean swapFlag = true;
         int compareToCount = 0;
@@ -117,11 +115,15 @@ public class Sorting {
                     swapFlag = true;
                     swap(data, scan, scan + 1);
                     swapCount++;
-                    System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
+                    // System.out.println("Swap number " + swapCount + ": " + Arrays.toString(data));
                 }
             }
         }
-        System.out.println("compareTo count: " + compareToCount);
+        long endTime = System.nanoTime();
+
+        double duration = (endTime - startTime)/1000000.0;
+
+        System.out.println("compareTo count: " + compareToCount + "\nSwap count: " + swapCount + "\nMethod duration: " + duration + "ms\n");    
     }
 
 
