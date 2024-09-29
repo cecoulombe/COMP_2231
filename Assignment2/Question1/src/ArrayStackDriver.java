@@ -2,7 +2,7 @@
  * Date: September 28, 2024
  * Course: COMP 2231
  * 
- * Assignment 1, Question 1: The ArrayStack implementation in Chapter 12 uses the top variable to point to the 
+ * Assignment 1, Question 2: The ArrayStack implementation in Chapter 12 uses the top variable to point to the 
  * next array position available in the stack (i.e. above the actual top of the stack). Modify the implementation 
  * such that stack[top] is the actual top of the stack. Do not introduce any other counter variables. Make sure 
  * your driver demonstates any method that you modify.
@@ -16,15 +16,14 @@
  
 public class ArrayStackDriver {
     private static int STACK_SIZE = 5;
-    @SuppressWarnings({ "unchecked", "rawtypes" })
     public static void main(String[] args) throws Exception {
         // variables
         System.out.println("New ArrayStack");
-        ArrayStack stack = new ArrayStack(STACK_SIZE);
+        ArrayStack<Integer> stack = new ArrayStack<>(STACK_SIZE);
         
         System.out.println();
         System.out.println("New ModifiedArrayStack");
-        ModifiedArrayStack mStack = new ModifiedArrayStack(STACK_SIZE);
+        ModifiedArrayStack<Integer> mStack = new ModifiedArrayStack<>(STACK_SIZE);
 
         // process and print results for ArrayStack, then for ModifiedArrayStack
             // push elements and push beyond the current capacity of the array
